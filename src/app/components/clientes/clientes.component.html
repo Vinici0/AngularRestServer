@@ -1,0 +1,102 @@
+
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Registro personal</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center ancho">
+      <h3>Auxiliar de Farmacia</h3>
+      <div class="row fs-6">
+        <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+          <div class="form-row d-flex justify-content-between ">
+            <div class="form-group col-md-6 m-2">
+              <label for="inputEmail4">Nombre</label>
+              <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre"  formControlName="nameCtrl">
+                <div *ngIf="form.get('nameCtrl')?.errors && form.get('nameCtrl')?.touched" class="text-danger">
+                  <p *ngIf="form.get('nameCtrl')?.hasError('minlength')">Minimo 3 catacteres</p>
+                  <p *ngIf="form.get('nameCtrl')?.hasError('required')">Es un campo requerido</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6 m-2">
+              <label for="inputPassword4">Apellido</label>
+              <input type="text" class="form-control" id="inputPassword4" placeholder="Apellido" formControlName="apellidoCtrl">
+              <div *ngIf="form.get('apellidoCtrl')?.errors && form.get('apellidoCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('apellidoCtrl')?.hasError('minlength')">Minimo 3 catacteres</p>
+                <p *ngIf="form.get('apellidoCtrl')?.hasError('required')">El apellido requerido</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-row d-flex justify-content-between ">
+            <div class="form-group col-md-6 m-2">
+              <label for="inputEmail4">Identificación</label>
+              <input type="text" class="form-control" id="inputEmail4" placeholder="Identificación" formControlName="informacinoCtrl">
+              <p>{{imprirCedulaValida}}</p>
+              <div *ngIf="form.get('informacinoCtrl')?.errors && form.get('informacinoCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('informacinoCtrl')?.hasError('minlength')">Minimo 3 catacteres</p>
+                <p *ngIf="form.get('informacinoCtrl')?.hasError('required')">Identificación requerido</p>
+              </div>
+            </div>
+            <div class="form-group col-md-6 m-2">
+              <label for="inputPassword4">Correo</label>
+              <input type="email" class="form-control" id="inputPassword4" placeholder="Correo" formControlName="correoCtrl">
+              <div *ngIf="form.get('correoCtrl')?.errors && form.get('correoCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('correoCtrl')?.hasError('minlength')">Minimo 6 catacteres</p>
+                <p *ngIf="form.get('correoCtrl')?.hasError('required')">El correo requerido</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-row d-flex justify-content-between ">
+            <div class="form-group col-md-6 m-2">
+              <label for="inputEmail4">Edad</label>
+              <input type="number" class="form-control" id="inputEmail4" placeholder="edad" formControlName="edadCtrl">
+              <div *ngIf="form.get('edadCtrl')?.errors && form.get('edadCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('edadCtrl')?.hasError('minlength')">Minimo 6 catacteres</p>
+                <p *ngIf="form.get('edadCtrl')?.hasError('required')">La edad requerido</p>
+              </div>
+            </div>
+            <div class="form-group col-md-6 m-2">
+              <label for="inputState">Cursos</label>
+              <select class="form-select" aria-label="Default select example" formControlName="selectCtrl">
+                <option selected>Seleccione una opcion</option>
+                <option value="1">Curso en Farmacología Básica</option>
+                <option value="2">Curso Superior Técnico Auxiliar</option>
+                <option value="3">Curso Superior en Atención Farmacéutica</option>
+              </select>
+              <div *ngIf="form.get('selectCtrl')?.errors && form.get('selectCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('selectCtrl')?.hasError('minlength')">Minimo 6 catacteres</p>
+                <p *ngIf="form.get('selectCtrl')?.hasError('required')">Curso requerido</p>
+              </div>
+              <!-- https://www.inesem.ec/Experto-Registro-Medicamentos-Y-Regulacion -->
+            </div>
+          </div>
+          <div class="form-row d-flex justify-content-between ">
+            <div class="form-group col-md-6 m-2">
+              <label for="inputState">Ciudad</label>
+              <select class="form-select" aria-label="Default select example" formControlName="ciudadCtrl">
+                <option selected>Seleccione una opcion</option>
+                <option value="1">Santo Domingo</option>
+                <option value="2">Esmeraldas</option>
+                <option value="3">Cuenca</option>
+              </select>
+              <div *ngIf="form.get('ciudadCtrl')?.errors && form.get('ciudadCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('ciudadCtrl')?.hasError('minlength')">Minimo 6 catacteres</p>
+                <p *ngIf="form.get('ciudadCtrl')?.hasError('required')">Ciudad requerido</p>
+              </div>
+              <!-- https://www.inesem.ec/Experto-Registro-Medicamentos-Y-Regulacion -->
+            </div>
+            <div class="form-group col-md-6 m-2">
+              <label for="inputPassword4">Descripción</label>
+              <input type="text" class="form-control" id="inputPassword4" placeholder="Descripción" formControlName="descripcionCtrl">
+              <div *ngIf="form.get('descripcionCtrl')?.errors && form.get('descripcionCtrl')?.touched" class="text-danger">
+                <p *ngIf="form.get('descripcionCtrl')?.hasError('minlength')">Minimo 6 catacteres</p>
+                <p *ngIf="form.get('descripcionCtrl')?.hasError('required')">Descripción requerido</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row bg-danger text-white w-100 rounded">
+            dwa
+              </div> -->
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

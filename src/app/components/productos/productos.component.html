@@ -1,0 +1,118 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Producto</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center w-100">
+      <div class="row m-5 fs-6" >
+        <div class="m-4 ">
+          <form class="mb-5" [formGroup]="form" (ngSubmit)="save($event)">
+            <div class="row fs-6">
+              <div class="col-4">
+                <div class="form-group col m-2">
+                  <label for="inputEmail4"><i class="bi bi-upc"></i>Código de barras</label>
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Ingrese Código de barras"  formControlName="codigoCtrl">
+                  <div *ngIf="form.get('codigoCtrl')?.errors && form.get('codigoCtrl')?.touched" class="text-danger">
+                    <p *ngIf="form.get('codigoCtrl')?.hasError('minlength')">Minimo 3 catacteres</p>
+                    <p *ngIf="form.get('codigoCtrl')?.hasError('required')">Es un campo requerido</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group col m-2">
+                  <label for="inputEmail5">Producto</label>
+                  <input type="text" class="form-control" id="inputEmail5" placeholder="Ingrese producto" formControlName="productoCtrl">
+                   <div *ngIf="form.get('productoCtrl')?.errors && form.get('productoCtrl')?.touched" class="text-danger">
+                    <p *ngIf="form.get('productoCtrl')?.hasError('minlength')">Minimo 3 catacteres</p>
+                    <p *ngIf="form.get('productoCtrl')?.hasError('required')">Es un campo requerido</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group col m-2">
+                  <label for="inputEmail5">Precio</label>
+                  <input type="number" class="form-control" id="inputEmail5" placeholder="Precio">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-group col m-2">
+                  <label for="inputEmail5">Cantidad</label>
+                  <input type="text" class="form-control" id="inputEmail5" placeholder="Cantidad">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group m-2">
+                  <label for="inputState">Tipo</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="1">ANALGESICO</option>
+                    <option value="2">ACETILSALICÍLICO</option>
+                    <option value="3">ViviND</option>
+                  </select>
+                  <!-- https://www.inesem.ec/Experto-Registro-Medicamentos-Y-Regulacion -->
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group m-2">
+                  <label for="inputState">Laboratorio</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Seleccione una opcion</option>
+                    <option value="1">Parmacet</option>
+                    <option value="2">Jacob</option>
+                    <option value="3">ViviND</option>
+                  </select>
+                  <!-- https://www.inesem.ec/Experto-Registro-Medicamentos-Y-Regulacion -->
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group col m-2">
+                  <label for="inputEmail5">Vencimiento</label>
+                  <input type="date" class="form-control" id="inputEmail5" placeholder="Vencimiento">
+                </div>
+              </div>
+
+            </div>
+            <div class="col-2  mt-4 pt-1">
+              <button type="submit" class="btn btn-success w-100">Registrar</button>
+            </div>
+          </form>
+          <!-- tabla  -->
+          <div class="mt-5">
+            <div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Laboratorio</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Parmacet</td>
+                    <td>Av. Quito</td>
+                    <td><button type="button" class="btn btn-primary m-1"><i class="bi bi-pencil"></i></button>
+                      <button type="button" class="btn btn-danger m-1"><i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td><button type="button" class="btn btn-primary m-1"><i class="bi bi-pencil"></i></button>
+                      <button type="button" class="btn btn-danger m-1"><i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
